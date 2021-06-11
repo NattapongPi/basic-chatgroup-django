@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form action="{% url 'chatroom:loginRequest' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="">Username</label>
+        <input type="text" name="username" class="form-control">
+        <div>Password</div>
+        <input type="password" name="password" class="form-control">
+        </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+{% endblock content %}

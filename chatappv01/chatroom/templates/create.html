@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<b>Create a room</b>
+<form action="{% url 'chatroom:createRoom' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <input type="text" id="roomname" name="roomname" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+{% endblock content %}

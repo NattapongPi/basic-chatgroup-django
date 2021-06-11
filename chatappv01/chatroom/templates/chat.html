@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<b>{{roomname}}</b>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li><b>{{message.sender}}</b> ({{message.updated_at}})  : {{message.message}}</li>
+        {% endfor %}
+    </ul>
+    
+{% endif %}
+<form action="{% url 'chatroom:send' room_id %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <input type="text" name="message" class="form-control">
+        <input type="hidden" name="sender" value={{user.username}} />
+    </div>
+    <button type="submit" class="btn btn-primary">send</button>
+</form>
+
+{% endblock content %}
